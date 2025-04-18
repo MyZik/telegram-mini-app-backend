@@ -4,6 +4,7 @@
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration
 parameters:
+    frontend_url: '%env(FRONTEND_URL)%'
 
 services:
     # default configuration for services in *this* file
@@ -17,8 +18,30 @@ services:
         resource: '../src/'
         exclude:
             - '../src/DependencyInjection/'
-            - '../src/Entity/'
             - '../src/Kernel.php'
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+    # Command handlers on command.bus
+#    App\Application\Command\Category\CreateCategoryCommandHandler:
+#        tags: [{ name: 'messenger.message_handler', bus: 'command.bus' }]
+#
+#    App\Application\Command\Item\CreateItemCommandHandler:
+#        tags: [{ name: 'messenger.message_handler', bus: 'command.bus' }]
+#
+#    App\Application\Command\Item\UpdateItemAvailabilityCommandHandler:
+#        tags: [{ name: 'messenger.message_handler', bus: 'command.bus' }]
+#
+#    # Query handlers on query.bus
+##    App\Application\Query\Category\GetCategoryListQueryHandler:
+##        tags: [{ name: 'messenger.message_handler', bus: 'query.bus' }]
+#
+#    App\Application\Query\Category\GetCategoryQueryHandler:
+#        tags: [{ name: 'messenger.message_handler', bus: 'query.bus' }]
+#
+#    App\Application\Query\Item\GetItemListByCategoryQueryHandler:
+#        tags: [{ name: 'messenger.message_handler', bus: 'query.bus' }]
+#
+#    App\Application\Query\Item\GetItemQueryHandler:
+#        tags: [{ name: 'messenger.message_handler', bus: 'query.bus' }]
